@@ -1,4 +1,4 @@
-from models import db, Player, Coach
+from .models import db, Player, Coach
 from flask_restful import reqparse, fields, marshal_with, abort, Resource
 from flask_sqlalchemy import SQLAlchemy
 
