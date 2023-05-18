@@ -27,3 +27,4 @@ if __name__  == '__main__':
 
 
 
+#$env:DATABASE_URL='postgres://clubdatabase_user:NQdcNkMwGGqAGxIkCAHT7Arnjjl4n6SH@dpg-chitk23hp8ufsbla8r3g-a.frankfurt-postgres.render.com/clubdatabase'
