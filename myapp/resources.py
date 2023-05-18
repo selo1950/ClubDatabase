@@ -87,6 +87,8 @@ class Players(Resource):
     @marshal_with(resource_fields_player)
     def get(self,player_id):
         result = Player.query.filter_by(id = player_id).first()
+        if not result:
+            abort(404, message = 'There is no player with that ID')
         return result
     
     @marshal_with(resource_fields_player)
