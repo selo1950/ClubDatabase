@@ -27,7 +27,7 @@ class Coaches(Resource):
         return result
     
     @marshal_with(resource_fields_coach)
-    def put(self,coach_id):
+    def post(self,coach_id):
         args = coach_post_args.parse_args()
         result = Coach.query.filter_by(id =coach_id).first()
         if result:
@@ -60,18 +60,18 @@ class Coaches(Resource):
     
 #args parser za provjeru i izvlačenje podataka iz requesta
 player_post_args = reqparse.RequestParser()
-player_post_args.add_argument('name', type = str, help = 'Players name', required = True)
-player_post_args.add_argument('surname', type = str, help = 'Players surname', required = True)
-player_post_args.add_argument('year_of_birth', type = int, help = 'Players birth year', required = True)
-player_post_args.add_argument('month_of_birth', type = int, help = 'Payers birth month', required = True)
-player_post_args.add_argument('coach_id', type = int, help = 'ID num of players coach', required = True)
+player_post_args.add_argument('name', type = str, help = 'Players name', required = True, location = 'args')
+player_post_args.add_argument('surname', type = str, help = 'Players surname', required = True, location = 'args')
+player_post_args.add_argument('year_of_birth', type = int, help = 'Players birth year', required = True, location = 'args')
+player_post_args.add_argument('month_of_birth', type = int, help = 'Payers birth month', required = True, location = 'args')
+player_post_args.add_argument('coach_id', type = int, help = 'ID num of players coach', required = True, location = 'args')
 
 player_update_args = reqparse.RequestParser()
-player_update_args.add_argument('name', type = str, help = 'Players name')
-player_update_args.add_argument('surname', type = str, help = 'Players surname')
-player_update_args.add_argument('year_of_birth', type = int, help = 'Players birth year')
-player_update_args.add_argument('month_of_birth', type = int, help = 'Payers birth month')
-player_update_args.add_argument('coach_id', type = int, help = 'ID num of players coach')
+player_update_args.add_argument('name', type = str, help = 'Players name', location = 'args')
+player_update_args.add_argument('surname', type = str, help = 'Players surname', location = 'args')
+player_update_args.add_argument('year_of_birth', type = int, help = 'Players birth year', location = 'args')
+player_update_args.add_argument('month_of_birth', type = int, help = 'Payers birth month', location = 'args')
+player_update_args.add_argument('coach_id', type = int, help = 'ID num of players coach', location = 'args')
 
 resource_fields_player = {
     'id' : fields.Integer,
@@ -92,7 +92,7 @@ class Players(Resource):
         return result
     
     @marshal_with(resource_fields_player)
-    def put(self,player_id):
+    def post(self,player_id):
         args = player_post_args.parse_args()
         result = Player.query.filter_by(id = player_id).first()
         if result:

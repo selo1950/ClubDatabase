@@ -14,6 +14,10 @@ main = Blueprint('main', __name__)
 #db.create_all()
 api = Api(main)
 
+@main.route('/')
+def home():
+    return {'message': 'Welcome to club database manager'}
+
 api.add_resource(Players, '/players/<int:player_id>')
 api.add_resource(Coaches, '/coaches/<int:coach_id>')
 
